@@ -1,0 +1,9 @@
+## O servidor pode reescrever as configurações padrões
+RewriteEngine On
+## Escreva a condição com base no script_filename
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+## Reescreve a regra
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+Options -Indexes
