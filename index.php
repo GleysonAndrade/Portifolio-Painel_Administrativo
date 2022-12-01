@@ -11,18 +11,32 @@
 	<meta name="keywords" content="projeto,meu,primeiro">
 	<meta name="description" content="Meu primeiro projeto">
 	<link href="<?php echo INCLUDE_PATH; ?>estilo/style.css" rel="stylesheet">
+	<link rel="icon" href="<?php echo INCLUDE_PATH; ?>favicon.ico" type="image/x-icon">
 	<title>Projeto 01</title>
 </head>
 <body>
+	<base base="<?php echo INCLUDE_PATH; ?>"></base>
+	<?php 
+		$url = isset($_GET['url']) ? $_GET['url'] : 'home';
+		switch ($url) {
+			case 'depoimentos':
+				echo '<target target="depoimentos"/>';
+				break;
+			case 'servicos':
+				echo '<target target="servicos"/>';
+				break;
+		}
+	?>
+	<?php new Email(); ?>
 	<header>
 		<div class="center">
 			<div class="logo left"><a href="/">Logomarca</a></div><!--logo-->
 			<nav class="desktop rigth">
 				<ul>
 					<li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
-					<li><a href="<?php echo INCLUDE_PATH; ?>sobre">Sobre</a></li>
-					<li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviçõs</a></li>
-					<li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
+					<li><a href="<?php echo INCLUDE_PATH; ?>depoimentos">Sobre</a></li>
+					<li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
+					<li><a realtime="contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
 				</ul>
 			</nav>
 			<nav class="mobile rigth">
@@ -31,107 +45,52 @@
 				</div>
 				<ul>
 					<li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
-					<li><a href="<?php echo INCLUDE_PATH; ?>sobre">Sobre</a></li>
+					<li><a href="<?php echo INCLUDE_PATH; ?>depoimentos">Sobre</a></li>
 					<li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviçõs</a></li>
-					<li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
+					<li><a realtime="contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
 				</ul>
 			</nav>
 			<div class="clear"></div><!--clear-->
 		</div><!--center-->
 	</header>
 
-	<section class="banner-principal">
-		<div class="overlay"></div><!--overlay-->
-		<div class="center">
-			<form>
-				<h2>Qual seu melhor e-mail?</h2>
-				<input type="email" name="email" required />
-				<input type="submit" name="acao" value="Cadastrar" />
-			</form>
-		</div><!--center-->
-	</section><!--Banner principal-->
-
-	<section class="descricao-autor">
-		<div class="center">
-			<div class="w50 left">
-				<h2>Gleyson Andrade</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.
-				</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.
-				</p>
-			</div><!--w50-->
-			<div class="w50 left">
-				<img class="rigth" src="<?php echo INCLUDE_PATH; ?>images/foto.jpg"><!--Pegar imagem-->
-			</div><!--w50-->
-			<div class="clear"></div>
-		</div><!--center-->
-	</section><!--descricao-autor-->
-
-	<section class="especialidades">
-		<div class="center">
-			<h2 class="title">Especialidades</h2>
-			<div class="w33 left box-especialidade">
-				<h3><i class="fa fa-css3" aria-hidden="true"></i></h3>
-				<h4>CSS3</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 		et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.
-				</p>
-			</div><!--box-especialidade-->
-			<div class="w33 left box-especialidade">
-				<h3><i class="fa fa-html5" aria-hidden="true"></i></h3>
-				<h4>HTML5</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 		et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.
-				</p>
-			</div><!--box-especialidade-->
-			<div class="w33 left box-especialidade">
-				<h3><i class="fa fa-gg-circle" aria-hidden="true"></i></h3>
-				<h4>JavaScript</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 		et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.
-				</p>
-			</div><!--box-especialidade-->
-			<div class="clear"></div><!--clear-->
-		</div><!--center-->
-	</section><!--especialidades-->
-
-	<section class="extras">
-		<div class="center">
-			<div class="w50 left depoimentos-container">
-				<h2 class="title">Depoimentos dos nossos clientes</h2>
-				<div class="depoimento-sigle">
-					<p class="depoimento-descricao">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim".
-					</p>
-					<p class="nome-autor">Lorem Ipsum</p>
-				</div><!--depoimento-sigle-->
-				<div class="depoimento-sigle">
-					<p class="depoimento-descricao">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim".
-					</p>
-					<p class="nome-autor">Lorem Ipsum</p>
-				</div><!--depoimento-sigle-->
-				<div class="depoimento-sigle">
-					<p class="depoimento-descricao">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim".
-					</p>
-					<p class="nome-autor">Lorem Ipsum</p>
-				</div><!--depoimento-sigle-->
-			</div><!--w50-->
-			<div class="w50 left servicos servicos-container">
-				<h2 class="title">Serviços</h2>
-				<div class="servicos">
-					<ul>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.</li>
-						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.</li>
-					</ul>
-				</div><!--servicos-->
-			</div><!--w50-->
-			<div class="clear"></div>
-		</div><!--center-->
-	</section><!--extras-->
-
-	<footer>
+	<div class="container-principal">
+		<?php
+			if(file_exists('pages/'.$url.'.php')){
+				include('pages/'.$url.'.php');
+			}else{
+				//Inclui um arquivo de erro pois a página não existe.
+				if($url !='depoimentos' && $url !='servicos'){
+					$pagina404 = true;
+					include('pages/404.php');
+				}else{
+					include('pages/home.php');
+				}
+				
+			}
+		?>
+	</div><!--container-principal-->
+	<footer <?php if(isset($pagina404) && $pagina404 == true) echo 'class="fixed";' ?> >
 		<div class="center">
 			<p>Todos os direitos reservados</p>
 		</div><!--center-->
 	</footer>
+
 	<script src="<?php echo INCLUDE_PATH; ?>js/jquery-3.6.1.min.js"></script>
+	<script src="<?php echo INCLUDE_PATH; ?>js/constants.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDHPNQxozOzQSZ-djvWGOBUsHkBUoT_qH4"></script>
+	<!-- <script src="<?php echo INCLUDE_PATH; ?>js/map.js"></script> -->
 	<script src="<?php echo INCLUDE_PATH; ?>js/script.js"></script>
+	<!-- Evita que o script seja carregado em outras páginas -->
+	<?php 
+		if($url == 'home' || $url == ""){
+	?>
+	<script src="<?php echo INCLUDE_PATH; ?>js/slider.js"></script>
+	<?php } ?>
+	<?php 
+		if($url == 'contato'){
+	?>
+	<?php } ?>
+	<script src="<?php echo INCLUDE_PATH; ?>js/exemplo.js"></script>
 </body>
 </html>

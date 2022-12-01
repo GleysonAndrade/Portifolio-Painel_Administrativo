@@ -8,6 +8,15 @@
 
 /**Boot CSS **/
 
+html,body{
+	overflow-x: hidden;
+	height: 100%;
+}
+
+input{
+	border: 0;
+}
+
 img{
 	width: 100%;
 	max-width: 330px;
@@ -85,12 +94,23 @@ nav.desktop a:hover{
 	text-decoration: underline;
 }
 
-section.banner-principal{
+section.banner-container{
 	width: 100%;
 	height: 600px;
-	background-image: url('../images/bg.jpeg');
-	background-size: cover;
+/*	background-image: url('../images/bg.jpeg');*/
+/*	background-size: cover;*/
 	position: relative;
+}
+
+.banner-single{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
 }
 
 .overlay{
@@ -99,14 +119,14 @@ section.banner-principal{
 	top: 0;
 	width: 100%;
 	height: 100%;
-	z-index: 1;
+	z-index: 2;
 	background-color: rgba(51, 51, 51, 0.7);
 }
 
-section.banner-principal form{
+section.banner-container form{
 	width: 93%;
 	max-width: 600px;
-	z-index: 2;
+	z-index: 3;
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -114,14 +134,14 @@ section.banner-principal form{
 	-ms-transform: translate(-50%,-50%);
 }
 
-section.banner-principal form h2{
+section.banner-container form h2{
 	color: white;
 	font-weight: 300;
 	font-size: 30px;
 	text-align: center;
 }
 
-section.banner-principal form input[type=email]{
+section.banner-container form input[type=email]{
 	width: 100%;
 	height: 66px;
 	margin-top: 10px;
@@ -131,7 +151,7 @@ section.banner-principal form input[type=email]{
 	padding-left: 10px;
 }
 
-section.banner-principal form input[type=submit]{
+section.banner-container form input[type=submit]{
 	width: 100%;
 	height: 66px;
 	margin-top: 10px;
@@ -243,11 +263,113 @@ footer{
 	padding: 30px 0;
 }
 
+footer.fixed{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
 footer p{
 	color: white;
 	text-align: center;
 	font-weight: 400;
 	font-size: 16px;
+}
+
+.bullets{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 5;
+}
+
+.bullets span{
+	margin: 0 10px;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: #444;
+}
+
+.bullets span.active-slider{
+	background: white;
+}
+
+/*Para arrumar o scroll-x do IE e EDGE*/
+body{
+	overflow-x: hidden;
+}
+
+section.erro-404 h2{
+	text-align: center;
+	color: #444;
+	font-weight: 400;
+	border-top: 2px solid #444;
+}
+
+section.erro-404 p{
+	margin-top: 8px;
+	text-align: center;
+	font-size: 16px;
+	color: #444;
+	font-weight: 300;
+}
+
+section.erro-404 a{
+	color: #444;
+}
+
+.wraper-404{
+	transform: translateY(-50%);
+	max-width: 1280px;
+	width: 80%;
+	position: absolute;
+	top: 50%;
+}
+
+#map{
+	width: 100%;
+	height: 400px;
+}
+
+.contato-conatiner{
+	padding: 40px 0;
+	text-align: center;
+}
+
+.contato-conatiner input[type=text]{
+	margin: 8px 0;
+	width: 100%;
+	height: 40px;
+	border: 1px solid #ccc;
+	padding-left: 8px;
+	font-size: 16px;
+	max-width: 800px;
+	color: #444;
+}
+
+.contato-conatiner textarea{
+	padding: 8px;
+	margin: 8px 0;
+	width: 100%;
+	height: 120px;
+	border: 1px solid #ccc;
+	padding-left: 8px;
+	font-size: 16px;
+	max-width: 800px;
+	resize: vertical;
+	color: #444;
+}
+
+.contato-conatiner input[type=submit]{
+	background: #00C59E;
+	cursor: pointer;
+	width: 140px;
+	height: 40px;
+	color: white;
 }
 
 @media screen and (max-width: 768px){
