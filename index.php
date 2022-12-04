@@ -27,7 +27,11 @@
 				break;
 		}
 	?>
-	<?php new Email(); ?>
+	<div class="sucesso">Formulário enviado com sucesso!</div>
+	<div class="overlay-loading">
+		<img src="<?php echo INCLUDE_PATH; ?>images/ajax-loader.gif">
+	</div><!--overlay-loading-->
+
 	<header>
 		<div class="center">
 			<div class="logo left"><a href="/">Logomarca</a></div><!--logo-->
@@ -92,5 +96,6 @@
 	?>
 	<?php } ?>
 	<script src="<?php echo INCLUDE_PATH; ?>js/exemplo.js"></script>
+	<script src="<?php echo INCLUDE_PATH; ?>js/formularios.js"></script>
 </body>
 </html>
