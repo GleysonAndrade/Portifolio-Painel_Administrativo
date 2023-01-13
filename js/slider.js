@@ -9,8 +9,8 @@ $(function(){
 
 	//Cria os Bullets dinamicamente
 	function initSlider(){
-		$('.banner-single').hide();
-		$('.banner-single').eq(0).show();
+		$('.banner-single').css('opacity','1');
+		$('.banner-single').css('opacity','1');
 		for (var i = 0; i < maxSlide+1; i++) {
 			var content = $('.bullets').html();
 			if(i == 0){
@@ -25,11 +25,11 @@ $(function(){
 	//Faz animação do slide em tempo real
 	function changeSlide(){
 		setInterval(function(){
-			$('.banner-single').eq(curSlide).stop().fadeOut(2000);
+			$('.banner-single').eq(curSlide).animate({'opacity':'0'},1000);
 			curSlide++;
 			if(curSlide > maxSlide)
 				curSlide = 0;
-			$('.banner-single').eq(curSlide).fadeIn(2000);
+			$('.banner-single').eq(curSlide).animate({'opacity':'1'},1000);
 			// Trocar bullets da navegação do slider!
 			$('.bullets span').removeClass('active-slider');
 			$('.bullets span').eq(curSlide).addClass('active-slider');
@@ -39,9 +39,9 @@ $(function(){
 	//Altera os Bullets ao clicar
 	$('body').on('click','.bullets span',function(){
 		var currentBullet = $(this);
-		$('.banner-single').eq(curSlide).stop().fadeOut(1000);
+		$('.banner-single').eq(curSlide).animate({'opacity':'0'},2000);
 		curSlide = currentBullet.index();
-		$('.banner-single').eq(curSlide).stop().fadeIn(1000);
+		$('.banner-single').eq(curSlide).animate({'opacity':'1'},2000);;
 		$('.bullets span').removeClass('active-slider');
 		currentBullet.addClass('active-slider');
 	});

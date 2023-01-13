@@ -1,10 +1,111 @@
+var map;
+	
+function initialize() {
+
+  var mapProp = {
+	center:new google.maps.LatLng(-20.041942, -44.050342),
+	zoom:14,
+	   scrollwheel: false,
+	 styles: [{
+	stylers: [{
+	  saturation: -100
+	}]
+	 }],
+	mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  
+  map=new google.maps.Map(document.getElementById("map"),mapProp);
+}
+
+function addMarker(lat,long,icon,content,showInfoWindow,openInfoWindow){
+	  var myLatLng = {lat:lat,lng:long};
+
+	  if(icon === ''){
+		   var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: map,
+			icon:icon
+		  });
+	  }else{
+		  var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: map,
+			icon:icon
+		  });
+	}
+
+	  var infoWindow = new google.maps.InfoWindow({
+				content: content,
+				maxWidth:200
+		});
+
+	  google.maps.event.addListener(infoWindow, 'domready', function() {
+
+	   // Reference to the DIV which receives the contents of the infowindow using jQuery
+	   var iwOuter = $('.gm-style-iw');
+
+	   /* The DIV we want to change is above the .gm-style-iw DIV.
+		* So, we use jQuery and create a iwBackground variable,
+		* and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+		*/
+	   var iwBackground = iwOuter.prev();
+
+	   // Remove the background shadow DIV
+	   iwBackground.children(':nth-child(2)').css({'background' : 'rgb(255,255,255)'}).css({'border-radius':'0px'});
+
+	   // Remove the white background DIV
+	   iwBackground.children(':nth-child(4)').css({'background' : 'rgb(255,255,255)'}).css({'border-radius':'0px'});
+
+	   // Moves the shadow of the arrow 76px to the left margin 
+		iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'display:none;'});
+
+		// Moves the arrow 76px to the left margin 
+		iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'display:none;'});
+
+	});
+		  if(showInfoWindow == undefined){
+			google.maps.event.addListener(marker, 'click', function () {
+				  infoWindow.open(map, marker);
+			 });
+		}else if(openInfoWindow == true){
+			infoWindow.open(map, marker);
+		}
+}
+
 // Referência : https://api.jquery.com/category/events/
 $(function(){
 	// Aqui vai todo nosso código de javascript
 	$('nav.mobile').click(function(){
 		// o que vai acontecer quando clicar na nav mobile
 		var listaMenu = $('nav.mobile ul');
+		//Abrir menu com o fadein
+		//verifica se o menu está aberto ou fechado
 
+		// if(listaMenu.is(':hidden') == true){
+		// 	listaMenu.fadeIn();
+		// }
+		// else{
+		// 	listaMenu.fadeOut();
+		// }
+
+		//Abrir ou fechar sem efeitos
+		// if(listaMenu.is(':hidden') == true){
+		// 	listaMenu.show();
+		// }
+		// else{
+		// 	listaMenu.hide();
+		// }
+
+		//Abrir ou fechar sem efeitos com css
+		// if(listaMenu.is(':hidden') == true){
+		// 	listaMenu.css('display', 'block');
+		// }
+		// else{
+		// 	listaMenu.css('display', 'none');
+		// }
+
+		//Abrir ou fechar o menu com efeito
+		//Verificar se menu está aberto ou fechado
 		if(listaMenu.is(':hidden') == true){
 			var icone = $('.botao-menu-mobile').find('i');
 			icone.removeClass('fa-bars');
@@ -40,7 +141,8 @@ $(function(){
 			},1000);
 
 			$('.container-principal').fadeIn(1000);
-			
+			window.history.pushState('','', pagina);	
+
 			return false;
 		})
 	}
