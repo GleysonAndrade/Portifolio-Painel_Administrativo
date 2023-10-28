@@ -52,7 +52,7 @@
 			<div class="w50 left depoimentos-container">
 				<h2 class="title">Depoimentos dos nossos clientes</h2>
 				<?php 
-					$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_site_depoimentos` ORDER BY order_id DESC LIMIT 3");
+					$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_site.depoimentos` ORDER BY order_id DESC LIMIT 3");
 					$sql->execute();
 					$depoimentos = $sql->fetchAll();
 					foreach ($depoimentos as $key => $value) {
