@@ -21,7 +21,7 @@
 	define('DATABASE', 'projeto_01');
 
 	//Constantes para painel de controle
-	define('NOME_EMPRESA','Gleyson A');
+	define('NOME_EMPRESA','Projeto 01');
 
 	//Funções
 	function pegaCargo($indice)

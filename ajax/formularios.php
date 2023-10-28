@@ -8,8 +8,8 @@
 		$corpo.="<hr>";
 	}
 	$info = array('assunto'=>$assunto,'corpo'=>$corpo);
-	$mail = new Email('mail.lauralacosatelie.com.br','contato@lauralacosatelie.com.br','LfGhB&LpBM3w','Gleyson');
-	$mail->addAddress('gleysondev@yahoo.com','Gleyson');
+	$mail = new Email('mail.teste.com.br','teste@teste.com.br','********','Seu-nome');
+	$mail->addAddress('teste@teste.com','Nome-remetente');
 	$mail->formatarEmail($info);
 	if ($mail->enviarEmail()) {
 		$data['sucesso'] = true;
